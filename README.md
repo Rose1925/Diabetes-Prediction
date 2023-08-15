@@ -15,6 +15,7 @@ Diabetes is a prevalent medical condition with significant implications for publ
 The code begins by loading the diabetes prediction dataset, which contains various features and a binary target variable indicating diabetes presence or absence. The data is split into training and testing sets for model evaluation.
 
 **Importing the Necessary Libraries**
+
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
@@ -27,22 +28,27 @@ from sklearn.svm import SVC
 from sklearn.neighbors import KNeighborsClassifier
 
 **Load the dataset**
+
 data = pd.read_csv("diabetes_prediction_dataset.csv")
 
 **Separate features and target**
+
 X = data.drop("diabetes", axis=1)
 y = data["diabetes"]
 
 **Split data into training and testing sets**
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
 **Define which features need one-hot encoding**
+
 categorical_features = ["gender", "smoking_history"]
 
 # Preprocessing: 
 The categorical features (such as gender and smoking history) are identified and treated using one-hot encoding to transform them into numerical representations. Numerical features are standardized using the StandardScaler to ensure comparable scales for modeling.
 
 **Create a column transformer for preprocessing**
+
 preprocessor = ColumnTransformer(
     transformers=[
         ("num", StandardScaler(), X_train.columns.difference(categorical_features)),
@@ -50,6 +56,7 @@ preprocessor = ColumnTransformer(
     ])
 
 **Fit and transform the data**
+
 X_train_scaled = preprocessor.fit_transform(X_train)
 X_test_scaled = preprocessor.transform(X_test)
 
@@ -57,6 +64,7 @@ X_test_scaled = preprocessor.transform(X_test)
 Five distinct machine learning models are chosen for diabetes prediction: Logistic Regression, Decision Tree, Random Forest, Support Vector Machine, and K-Nearest Neighbors. Each model is trained using the preprocessed training data.
 
 **Initialize models**
+
 models = [
     ("Logistic Regression", LogisticRegression(max_iter=1000)),
     ("Decision Tree", DecisionTreeClassifier()),
@@ -66,12 +74,14 @@ models = [
 ]
 
 **Dictionary to store results**
+
 results = {}
 
 # Model Evaluation: 
 The trained models are evaluated using the test dataset. Accuracy scores and classification reports are generated for each model's performance on diabetes prediction.
 
 **Train and evaluate each model**
+
 for name, model in models:
     print(f"Training {name}...")
     model.fit(X_train_scaled, y_train)
