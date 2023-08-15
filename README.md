@@ -1,17 +1,18 @@
 # Diabetes-Prediction
 
-#***Abstract:**
+# Abstract:
 This code presents a comprehensive approach to predicting diabetes using various machine learning models and visualizing the results. The dataset includes features such as gender, age, hypertension, heart disease, smoking history, BMI, HbA1c level, and blood glucose level. The code employs preprocessing techniques, trains multiple models, evaluates their performance, and uses visualizations to aid in model comparison and analysis.
 
-#***Keywords:**
-**Diabetes prediction with machine learning,Model comparison for diabetes diagnosis,Data preprocessing and visualization,Healthcare analytics,Predictive modeling for medical conditions,Exploratory data analysis (EDA) in healthcare,Performance evaluation of classification models,Feature scaling and encoding techniques,Visual representation of model metrics,Future directions in medical prediction.***
+# Keywords:
+***Diabetes prediction with machine learning,Model comparison for diabetes diagnosis,Data preprocessing and visualization,Healthcare analytics,Predictive modeling for medical conditions,Exploratory data analysis (EDA) in healthcare,Performance evaluation of classification models,Feature scaling and encoding techniques,Visual representation of model metrics,Future directions in medical prediction.***
 
-#**Introduction:**
+# Introduction:
 Diabetes is a prevalent medical condition with significant implications for public health. Predicting diabetes using machine learning models can provide valuable insights into identifying at-risk individuals for early intervention. This code aims to showcase the process of predicting diabetes by training five different machine learning models and visualizing their performance using bar plots and heatmaps.
 
-#**Description of the Code:**
+# Description of the Code:
 
-#**Data Loading and Preparation:** The code begins by loading the diabetes prediction dataset, which contains various features and a binary target variable indicating diabetes presence or absence. The data is split into training and testing sets for model evaluation.
+# Data Loading and Preparation:
+The code begins by loading the diabetes prediction dataset, which contains various features and a binary target variable indicating diabetes presence or absence. The data is split into training and testing sets for model evaluation.
 
 **Importing the Necessary Libraries**
 import pandas as pd
@@ -38,7 +39,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 **Define which features need one-hot encoding**
 categorical_features = ["gender", "smoking_history"]
 
-#**Preprocessing:** The categorical features (such as gender and smoking history) are identified and treated using one-hot encoding to transform them into numerical representations. Numerical features are standardized using the StandardScaler to ensure comparable scales for modeling.
+# Preprocessing: 
+The categorical features (such as gender and smoking history) are identified and treated using one-hot encoding to transform them into numerical representations. Numerical features are standardized using the StandardScaler to ensure comparable scales for modeling.
 
 **Create a column transformer for preprocessing**
 preprocessor = ColumnTransformer(
@@ -51,7 +53,8 @@ preprocessor = ColumnTransformer(
 X_train_scaled = preprocessor.fit_transform(X_train)
 X_test_scaled = preprocessor.transform(X_test)
 
-#**Model Selection and Training:** Five distinct machine learning models are chosen for diabetes prediction: Logistic Regression, Decision Tree, Random Forest, Support Vector Machine, and K-Nearest Neighbors. Each model is trained using the preprocessed training data.
+# Model Selection and Training:
+Five distinct machine learning models are chosen for diabetes prediction: Logistic Regression, Decision Tree, Random Forest, Support Vector Machine, and K-Nearest Neighbors. Each model is trained using the preprocessed training data.
 
 **Initialize models**
 models = [
@@ -65,7 +68,8 @@ models = [
 **Dictionary to store results**
 results = {}
 
-#**Model Evaluation:** The trained models are evaluated using the test dataset. Accuracy scores and classification reports are generated for each model's performance on diabetes prediction.
+# Model Evaluation: 
+The trained models are evaluated using the test dataset. Accuracy scores and classification reports are generated for each model's performance on diabetes prediction.
 
 **Train and evaluate each model**
 for name, model in models:
@@ -81,10 +85,10 @@ for name, model in models:
 
 print("Done!")
 
-#**Results:**
+# Results: 
 The results section of the code provides insights into the accuracy and F1-scores of the trained models. The bar plot showcases the accuracy of each model, helping to identify the models with the highest predictive accuracy. The heatmap visualizes the F1-scores, which are essential metrics for imbalanced classification tasks like diabetes prediction.
 
-#**Future Work:**
+# Future Work:
 While this code serves as a solid foundation for diabetes prediction and model comparison, there are several avenues for future work:
 
 **Hyperparameter Tuning:** Further optimize each model's hyperparameters to potentially enhance their performance.
